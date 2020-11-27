@@ -1,0 +1,57 @@
+#%% Constants
+
+import math as m
+import matplotlib.pyplot as plt
+import numpy as np
+
+P_sl = 146.7/1000
+T_sl = 93.7
+# P = 
+# 296.8
+# rho = P/(r*T)
+rho = 0.90926
+
+sref = 1.17
+b = 4
+AR = b**2/sref
+v = 26.3889
+e = 0.7;
+
+#c = 0.4
+c = 6.8*10**-8
+
+w = 40
+w0 = w
+# w1 = w - (0.768*12)
+# https://en.wikipedia.org/wiki/Avgas
+w1 = w - 8
+# n = v/550
+n = 0.8
+
+
+#%% Coefficient of Lift
+
+#CL = w/(0.5*rho*sref*v**2)
+CL = 0.4386
+
+print(CL)
+
+#%% Coefficient of Drag
+
+Cd0 = 0.08
+#CD = Cd0 + ((CL**2)/(3.1415926*e*AR))
+CD = 0.0124
+print(CD)
+
+
+#%% Range
+ 
+R = (n/(c))*(CL/CD)*np.log(w0/w1)
+print(R) 
+
+#%% Endurance
+
+E = (n/c)*((CL**(3/2))/CD)*((2*rho*sref)**0.5)*((1/(w1**0.5))-(1/(w0**0.5)))
+print(E)
+
+# %%
